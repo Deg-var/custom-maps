@@ -21,7 +21,6 @@ class m231109_161912_create_maps_table extends Migration
             'mod_link' => $this->text(),
             'user_id' => $this->integer(),
             'game_id' => $this->integer(),
-            'created_at' => $this->timestamp()->defaultValue('CURRENT_TIMESTAMP'),
         ]);
     }
 
