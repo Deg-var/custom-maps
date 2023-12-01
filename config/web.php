@@ -2,7 +2,6 @@
 
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
-$dbDev = require __DIR__ . '/db_dev.php';
 
 $config = [
     'id' => 'basic',
@@ -47,7 +46,7 @@ $config = [
             'linkAssets' => true,
             'appendTimestamp' => true
         ],
-        'db' => YII_ENV === 'prod' ? $db : $dbDev,
+        'db' => YII_ENV === $db,
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
