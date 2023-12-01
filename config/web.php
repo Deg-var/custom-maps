@@ -46,7 +46,7 @@ $config = [
             'linkAssets' => true,
             'appendTimestamp' => true
         ],
-        'db' => YII_ENV === $db,
+        'db' => $db,
         'urlManager' => [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
