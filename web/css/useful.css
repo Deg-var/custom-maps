@@ -1,0 +1,32 @@
+.real-hint {
+    background-color: #282828;
+    /*border: 1px solid #aaa;*/
+    border-radius: 10px;
+    display: none;
+    padding: 5px 10px;
+    position: absolute;
+    width: 169px;
+    z-index: 99;
+    color: white;
+}
+
+.real-hint .hint-caption {
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+.real-hint .prm-cross {
+    background: url("/images/cross.jpg") no-repeat scroll right top rgba(0, 0, 0, 0);
+    cursor: pointer;
+    float: right;
+    height: 16px;
+    margin-top: 3px;
+    padding-left: 15px;
+    right: 10px;
+    width: 16px;
+}
+
+.real-show-hint {
+    cursor: pointer;
+    /*color: #8c0000;*/
+}

@@ -312,7 +312,6 @@ class SiteController extends Controller
     /**
      * Displays about page.
      *
-     * @return string
      * @throws HttpException
      */
     public function actionNewMapCreate()
@@ -342,7 +341,6 @@ class SiteController extends Controller
     /**
      * Displays about page.
      *
-     * @return string
      */
     public function actionNewComment()
     {
@@ -366,7 +364,6 @@ class SiteController extends Controller
     /**
      * Displays about page.
      *
-     * @return string
      */
     public function actionSwitchCommentLikeButton()
     {
@@ -399,7 +396,6 @@ class SiteController extends Controller
     /**
      * Displays about page.
      *
-     * @return string
      */
     public function actionSwitchMapLikeButton()
     {
@@ -479,8 +475,6 @@ class SiteController extends Controller
             return $this->goHome();
         }
 
-        sleep(1);
-
         return $this->render('user-profile');
     }
 
@@ -495,8 +489,35 @@ class SiteController extends Controller
 
     public function actionSetUserCloseAdWindow()
     {
+        if (Yii::$app->user->isGuest) {
+            return null;
+        }
+
         $user = User::findOne(Yii::$app->user->id);
         $user->ad_window_viewed = 1;
         $user->save();
     }
+
+    public function actionUseful()
+    {
+        return $this->render('useful');
+    }
+
+    public function actionUsefulAoe()
+    {
+        return $this->render('useful-aoe', ['aoeIntroTextForMapCreatorViewed' => Yii::$app->user?->identity?->aoe_intro_text_for_map_creator_viewed]);
+    }
+
+
+    public function actionSetAoeIntroTextForMapCreatorViewed()
+    {
+        if (Yii::$app->user->isGuest) {
+            return null;
+        }
+
+        $user = User::findOne(Yii::$app->user->id);
+        $user->aoe_intro_text_for_map_creator_viewed = Yii::$app->request->post('value');
+        $user->save();
+    }
+
 }

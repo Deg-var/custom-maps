@@ -27,7 +27,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
-<body class="d-flex flex-column h-100">
+<body class="d-flex flex-column h-100 <?= str_contains(Yii::$app->controller->action->id, 'useful') ? 'bg-black' : 'bg-light' ?>">
 <?php $this->beginBody() ?>
 
 <header id="header">
@@ -46,6 +46,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
             ['label' => 'Warcraft 3', 'url' => ['/site/warcraft3']],
             Yii::$app->user->isGuest
                 ? '' : ['label' => 'Мои карты', 'url' => ['/site/my-maps']],
+            ['label' => 'Полезное', 'url' => ['/site/useful']],
             Yii::$app->user->isGuest
                 ? '' : ['label' => 'Редактировать профиль', 'url' => ['/site/user-profile']],
             ['label' => 'Поддержать', 'url' => 'https://boosty.to/pankyxaa', 'linkOptions' => ['target' => '_blank'],],
@@ -65,7 +66,17 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
     ?>
 </header>
 
-<main id="main" class="flex-shrink-0" role="main">
+<main id="main" class="flex-shrink-0" role="main"
+    <?php if (Yii::$app->controller->action->id === 'useful'): ?>
+        style="
+      background-color: black;
+      background-repeat: no-repeat;
+      background-size: cover;
+      background-position-x:center;
+      background-position-y:top;
+      "
+    <?php endif; ?>
+>
     <div class="container">
         <?php if (!empty($this->params['breadcrumbs'])): ?>
             <?= Breadcrumbs::widget([
@@ -81,7 +92,10 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
     </div>
 </main>
 
-<footer id="footer" class="mt-auto py-3 bg-light">
+<footer
+        id="footer"
+        class="mt-auto py-3 <?= str_contains(Yii::$app->controller->action->id, 'useful') ? 'bg-black' : 'bg-light' ?>"
+>
     <div class="container">
         <div class="row text-muted">
             <div class="col-md-12 text-center">&copy; Pankyxaa Inc <?= date('Y') ?></div>

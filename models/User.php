@@ -16,6 +16,7 @@ use app\models\Map;
  * @property string $img_url
  * @property string $description
  * @property int $ad_window_viewed
+ * @property int $aoe_intro_text_for_map_creator_viewed
  * @property Map[] $maps
  * @property Map[] $someMaps
  */
