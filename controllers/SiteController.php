@@ -503,11 +503,15 @@ class SiteController extends Controller
         return $this->render('useful');
     }
 
+    public function actionUsefulWarcraft3()
+    {
+        return $this->render('useful-w3');
+    }
+
     public function actionUsefulAoe()
     {
         return $this->render('useful-aoe', ['aoeIntroTextForMapCreatorViewed' => Yii::$app->user?->identity?->aoe_intro_text_for_map_creator_viewed]);
     }
-
 
     public function actionSetAoeIntroTextForMapCreatorViewed()
     {
