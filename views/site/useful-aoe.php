@@ -39,6 +39,10 @@ AoeUsefulVeiwedAsset::register($this);
                 <br>
                 <div>И в этом во всем надо хотя бы чуть-чуть разбираться если хочешь делать карты для эпохи.</div>
                 <br>
+                <?php if (Yii::$app->user->isGuest): ?>
+                    <div>Пожалуйста, зарегистрируйся если хочешь посмотреть полезные материалы.</div>
+                    <br>
+                <?php endif; ?>
             </div>
         </div>
         <div style="display: <?= $aoeIntroTextForMapCreatorViewed ? 'block' : 'none' ?>">
