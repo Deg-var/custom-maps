@@ -32,7 +32,7 @@ $this->params['breadcrumbs'][] = $this->title;
                         <div class="row pt-3">
                             <div class="col-lg-2 col-4 text-center">
                                 <div>
-                                    <img src="<?= $map->img_link ?? $map->game->default_img_url ?>" alt="" style="height: 20vh; width: 100%">
+                                    <img src="<?= !empty($map->img_link) ? $map->img_link : $map->game->default_img_url ?>" alt="" style="height: 20vh; width: 100%">
                                 </div>
                                 <div class="text-start forMapLike mapId-<?= $map->id ?>" id="mapId-<?= $map->id ?>"
                                      data-map-id="<?= $map->id ?>" style="position: relative; top: 30%">

@@ -7,12 +7,14 @@
 use app\models\Map;
 
 foreach ($maps as $key => $map): ?>
-    <div class="col-12 mt-3 p-3" style="background-color:<?= fmod($key, 2) ? 'deepskyblue' : 'lightblue'; ?>; border-radius: 10px">
+    <div class="col-12 mt-3 p-3"
+         style="background-color:<?= fmod($key, 2) ? 'deepskyblue' : 'lightblue'; ?>; border-radius: 10px">
         <div class="row">
             <div class="col-12  text-center">
                 <a class="col-12"
                    href="/site/map?id=<?= $map->id ?>">
-                    <img src="<?= $map->img_link ?? $map->game->default_img_url ?>" alt="" style="height: 20vh">
+                    <img src="<?= !empty($map->img_link) ? $map->img_link : $map->game->default_img_url ?>" alt=""
+                         style="height: 20vh">
                 </a>
                 <div class="row">
                     <div class="col-auto">Игра:</div>

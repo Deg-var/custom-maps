@@ -37,7 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <div class="col-12 mt-3">
                         <div class="row">
                             <div class="col-lg-2 col-4  text-center">
-                                <img src="<?= $map->img_link ?? $map->game->default_img_url ?>" alt="" style="height: 20vh; width: 100%">
+                                <img src="<?= !empty($map->img_link) ? $map->img_link : $map->game->default_img_url ?>" alt="" style="height: 20vh; width: 100%">
                                 <div class="row">
                                     <div class="col-auto">Игра:</div>
                                     <div class="col-auto text-start"><?= $map->game?->name ?></div>
