@@ -9,6 +9,7 @@ use yii\db\ActiveRecord;
  * @property int $id
  * @property string $name
  * @property string $description
+ * @property string $default_img_url
  * @property Map[] $maps
  */
 class Game extends ActiveRecord
