@@ -220,9 +220,17 @@ class SiteController extends Controller
             return $this->goHome();
         }
 
-        $maps = Yii::$app->user->identity->maps;
+        $query = Map::find()->where(['user_id' => Yii::$app->user->id]);
+        $countQuery = clone $query;
+        $pages = new Pagination(['totalCount' => $countQuery->count(), 'pageSize' => 5]);
+        $maps = $query->offset($pages->offset)
+            ->limit($pages->limit)
+            ->all();
 
-        return $this->render('maps', ['maps' => $maps]);
+        return $this->render('maps', [
+            'maps' => $maps,
+            'pages' => $pages,
+        ]);
     }
 
     /**
