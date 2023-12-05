@@ -1,0 +1,10 @@
+.nav-bar {
+    text-align: center;
+}
+
+
+.nav-bar nav {
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto;
+}

@@ -4,6 +4,9 @@ use app\assets\MapAsset;
 use app\models\Map;
 use app\models\User;
 use yii\bootstrap5\Html;
+use yii\bootstrap5\LinkPager;
+use yii\data\Pagination;
+
 
 /**
  * @var yii\web\View $this
@@ -11,6 +14,7 @@ use yii\bootstrap5\Html;
  * @var app\models\LoginForm $model
  * @var User $user
  * @var Map[] $maps
+ * @var Pagination $pages
  */
 
 MapAsset::register($this);
@@ -27,7 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-login">
     <?php if (!Yii::$app->user->isGuest): ?>
-    <?= Html::a('Добавить карту',['site/new-map'],['class'=>'btn btn-success']) ?>
+        <?= Html::a('Добавить карту', ['site/new-map'], ['class' => 'btn btn-success']) ?>
     <?php endif; ?>
     <h1><?= Html::encode($this->title) ?></h1>
     <div class="row mt-3">
@@ -37,7 +41,8 @@ $this->params['breadcrumbs'][] = $this->title;
                     <div class="col-12 mt-3">
                         <div class="row">
                             <div class="col-lg-2 col-4  text-center">
-                                <img src="<?= !empty($map->img_link) ? $map->img_link : $map->game->default_img_url ?>" alt="" style="height: 20vh; width: 100%">
+                                <img src="<?= !empty($map->img_link) ? $map->img_link : $map->game->default_img_url ?>"
+                                     alt="" style="height: 20vh; width: 100%">
                                 <div class="row">
                                     <div class="col-auto">Игра:</div>
                                     <div class="col-auto text-start"><?= $map->game?->name ?></div>
@@ -70,18 +75,23 @@ $this->params['breadcrumbs'][] = $this->title;
                                  data-map-id="<?= $map->id ?>" style="position: relative; top: 45%">
                                 <?= $this->renderAjax('_map-likes', ['map' => $map]) ?>
                             </div>
-                            <?php if(Yii::$app->user->id === $map->user_id):  ?>
-                            <div class="col-10 text-end">
-                                <?= Html::a('Редактировать', ['site/map-edit', 'id' => $map->id], ['class' => 'btn btn-warning']) ?>
-                            </div>
-                            <?php else:?>
-                             <div class="col-10 text-end">
+                            <?php if (Yii::$app->user->id === $map->user_id): ?>
+                                <div class="col-10 text-end">
+                                    <?= Html::a('Редактировать', ['site/map-edit', 'id' => $map->id], ['class' => 'btn btn-warning']) ?>
+                                </div>
+                            <?php else: ?>
+                                <div class="col-10 text-end">
                                     <?= Html::a('ХОЧУ!', $map->mod_link, ['class' => 'btn btn-warning', 'target' => '_blank']) ?>
                                 </div>
-                            <?php endif;?>
+                            <?php endif; ?>
                         </div>
                     </div>
                 <?php endforeach; ?>
+                <div class="nav-bar">
+                    <?= LinkPager::widget([
+                        'pagination' => $pages,
+                    ]); ?>
+                </div>
             </div>
         </div>
     </div>

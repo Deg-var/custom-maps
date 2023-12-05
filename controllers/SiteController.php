@@ -10,6 +10,7 @@ use app\models\User;
 use Telegram\Bot\Api;
 use Yii;
 use yii\base\Exception;
+use yii\data\Pagination;
 use yii\filters\AccessControl;
 use yii\helpers\ArrayHelper;
 use yii\web\Controller;
@@ -431,11 +432,17 @@ class SiteController extends Controller
      */
     public function actionAoe2de()
     {
-        $maps = Map::findAll([
-            'game_id' => 1
-        ]);
+        $query = Map::find()->where(['game_id' => 1]);
+        $countQuery = clone $query;
+        $pages = new Pagination(['totalCount' => $countQuery->count(), 'pageSize' => 5]);
+        $maps = $query->offset($pages->offset)
+            ->limit($pages->limit)
+            ->all();
 
-        return $this->render('maps', ['maps' => $maps]);
+        return $this->render('maps', [
+            'maps' => $maps,
+            'pages' => $pages,
+        ]);
     }
 
     /**
@@ -445,11 +452,17 @@ class SiteController extends Controller
      */
     public function actionWarcraft3()
     {
-        $maps = Map::findAll([
-            'game_id' => 2
-        ]);
+        $query = Map::find()->where(['game_id' => 2]);
+        $countQuery = clone $query;
+        $pages = new Pagination(['totalCount' => $countQuery->count(), 'pageSize' => 5]);
+        $maps = $query->offset($pages->offset)
+            ->limit($pages->limit)
+            ->all();
 
-        return $this->render('maps', ['maps' => $maps]);
+        return $this->render('maps', [
+            'maps' => $maps,
+            'pages' => $pages,
+        ]);
     }
 
     /**

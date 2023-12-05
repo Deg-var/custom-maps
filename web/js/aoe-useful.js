@@ -1,5 +1,5 @@
 $(document).ready(function () {
-    $(document).on('click', function (e) {
+    $(document).on('click','main, footer', function (e) {
         if ($('.body-content').attr('data-aoe-intro-text-for-map-creator-viewed') === 'no') {
             $.post('/site/set-aoe-intro-text-for-map-creator-viewed', {
                 value: 1
