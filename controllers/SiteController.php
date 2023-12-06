@@ -71,7 +71,7 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        $newMaps = Map::find()->limit(3)->all();
+        $newMaps = Map::find()->limit(3)->orderBy(['id'=>SORT_DESC])->all();
         $someAoe2deMaps = Map::find()->where(['game_id' => 1])->orderBy('RAND()')->limit(3)->all();
         $someWarcraft3Maps = Map::find()->where(['game_id' => 2])->orderBy('RAND()')->limit(3)->all();
 
