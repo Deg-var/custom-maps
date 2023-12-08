@@ -68,7 +68,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                     <?= Html::a('Редактировать', ['site/map-edit', 'id' => $map->id], ['class' => 'btn btn-warning']) ?>
                                 </div>
                                 <div class="col-5 text-end">
-                                    <?= Html::button('Не удаляй меня создатель!!',
+                                    <?= Html::button('Не удаляй меня, семпай!!',
                                         ['class' => 'btn btn-danger delete-map', 'data-map-id' => $map->id]
                                     ) ?>
                                 </div>
