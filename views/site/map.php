@@ -32,7 +32,8 @@ $this->params['breadcrumbs'][] = $this->title;
                         <div class="row pt-3">
                             <div class="col-lg-2 col-4 text-center">
                                 <div>
-                                    <img src="<?= !empty($map->img_link) ? $map->img_link : $map->game->default_img_url ?>" alt="" style="height: 20vh; width: 100%">
+                                    <img src="<?= !empty($map->img_link) ? $map->img_link : $map->game->default_img_url ?>"
+                                         alt="" style="height: 20vh; width: 100%">
                                 </div>
                                 <div class="text-start forMapLike mapId-<?= $map->id ?>" id="mapId-<?= $map->id ?>"
                                      data-map-id="<?= $map->id ?>" style="position: relative; top: 30%">
@@ -65,6 +66,11 @@ $this->params['breadcrumbs'][] = $this->title;
                             <?php if ($map->user_id === Yii::$app->user->id): ?>
                                 <div class="col-12 text-end">
                                     <?= Html::a('Редактировать', ['site/map-edit', 'id' => $map->id], ['class' => 'btn btn-warning']) ?>
+                                </div>
+                                <div class="col-5 text-end">
+                                    <?= Html::button('Не удаляй меня создатель!!',
+                                        ['class' => 'btn btn-danger delete-map', 'data-map-id' => $map->id]
+                                    ) ?>
                                 </div>
                             <?php else: ?>
                                 <div class="col-12 text-end">

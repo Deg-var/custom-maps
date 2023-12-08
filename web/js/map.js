@@ -48,4 +48,13 @@ $(document).ready(function () {
         }
 
     })
+
+    $(document).on('click', '.delete-map', function () {
+        let mapId = $(this).attr('data-map-id');
+        $.post('/site/delete-map', {
+            mapId: mapId
+        }).then(() => {
+            window.location.href = '/site/my-maps';
+        })
+    })
 })
