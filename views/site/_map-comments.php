@@ -14,7 +14,7 @@ use yii\helpers\ArrayHelper;
     <div class="row border border-1 mb-1 pt-2 pb-2"
          style="background-color:<?= fmod($key, 2) ? 'deepskyblue' : 'lightblue'; ?>;">
         <div class="col-2">
-            <img src="<?= $comment->user->img_url ?>" alt="" style="height: 10vh">
+            <img src="<?= $comment->user->img_url ?? '/img/user-sample.png' ?>" alt="" style="height: 10vh">
         </div>
         <div class="col-10">
             <h4><?= $comment->user->username ?></h4>

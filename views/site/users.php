@@ -26,7 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
                     <div class="col-12 border p-2">
                         <div class="row">
                             <div class="col-4">
-                                <img src="<?= $user->img_url ?>" alt="Аватарка <?= $user->username ?>" style="height: 20vh; width: 100%">
+                                <img src="<?= $user->img_url ?? '/img/user-sample.png' ?>" alt="Аватарка <?= $user->username ?>" style="height: 20vh; width: 100%">
                             </div>
                             <div class="col-8">
                                 <h4><?= $user->username ?></h4>
