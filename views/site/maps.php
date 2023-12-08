@@ -76,14 +76,17 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <?= $this->renderAjax('_map-likes', ['map' => $map]) ?>
                             </div>
                             <?php if (Yii::$app->user->id === $map->user_id): ?>
-                                <div class="col-10 text-end">
+                                <div class="col-2 offset-6 text-end">
                                     <?= Html::a('Редактировать', ['site/map-edit', 'id' => $map->id], ['class' => 'btn btn-warning']) ?>
                                 </div>
-                                <div class="col-5 text-end">
-                                    <?= Html::button('Не удаляй меня, семпай!!', ['class' => 'btn btn-danger delete-map', 'target' => '_blank']) ?>
+                                <div class="col-2 text-end">
+                                    <?= Html::button(
+                                        'Не удаляй меня, семпай!!',
+                                        ['class' => 'btn btn-danger delete-map', 'data-map-id' => $map->id]
+                                    ) ?>
                                 </div>
                             <?php else: ?>
-                                <div class="col-5 text-end">
+                                <div class="col-10 text-end">
                                     <?= Html::a('ХОЧУ!', $map->mod_link, ['class' => 'btn btn-warning', 'target' => '_blank']) ?>
                                 </div>
                             <?php endif; ?>

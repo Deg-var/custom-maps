@@ -64,10 +64,10 @@ $this->params['breadcrumbs'][] = $this->title;
                                 <?php endif; ?>
                             </div>
                             <?php if ($map->user_id === Yii::$app->user->id): ?>
-                                <div class="col-12 text-end">
+                                <div class="col-2 offset-8 text-end">
                                     <?= Html::a('Редактировать', ['site/map-edit', 'id' => $map->id], ['class' => 'btn btn-warning']) ?>
                                 </div>
-                                <div class="col-5 text-end">
+                                <div class="col-2 text-end">
                                     <?= Html::button('Не удаляй меня, семпай!!',
                                         ['class' => 'btn btn-danger delete-map', 'data-map-id' => $map->id]
                                     ) ?>
