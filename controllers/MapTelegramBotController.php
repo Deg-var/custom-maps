@@ -83,10 +83,10 @@ class MapTelegramBotController extends Controller
             $text = 'Карта от ' . $map->user->username . "\n" . $map->name . "\n" . $map->description . "\n"
                 . '<a href="' . $map->mod_link . '">Скачать</a>';
 
-            $myBot->sendPhoto([
-                'chat_id' => $massage->from->id,
-                'photo' => $map->img_link,
-            ]);
+//            $myBot->sendPhoto([
+//                'chat_id' => $massage->from->id,
+//                'photo' => $map->img_link,
+//            ]);
 
             $myBot->sendMessage([
                 'chat_id' => $massage->from->id,
