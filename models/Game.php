@@ -16,7 +16,7 @@ class Game extends ActiveRecord
 {
 
     const AOE2DE = 1;
-    const WARCRAFT3 = 1;
+    const WARCRAFT3 = 2;
 
     public function attributeLabels(): array
     {
