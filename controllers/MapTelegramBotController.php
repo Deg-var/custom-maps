@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\Game;
 use app\models\Map;
 use app\models\MapComment;
 use app\models\MapCommentLike;
@@ -69,10 +70,23 @@ class MapTelegramBotController extends Controller
 
         $massage = $input->getMessage();
 
-        $myBot->sendMessage([
-            'chat_id'=>$massage->from->id,
-            'text'=>json_encode($massage)
+        if ($massage->text === '/get_rand_aoe_map'){
+
+            /** @var Map $map */
+            $map = Map::find()->where(['game_id'=>Game::AOE2DE])->orderBy('RAND()')->one();
+
+            $text = 'Карта от ' . $map->user->username . "\n" . $map->name . "\n" . $map->description;
+
+            $myBot->sendMessage([
+                'chat_id'=>$massage->from->id,
+                'text'=> $text
             ]);
+        }
+
+//        $myBot->sendMessage([
+//            'chat_id'=>$massage->from->id,
+//            'text'=>json_encode($massage)
+//            ]);
 
         return true;
     }
