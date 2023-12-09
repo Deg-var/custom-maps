@@ -90,7 +90,7 @@ class MapTelegramBotController extends Controller
 
             $myBot->sendMessage([
                 'chat_id' => $massage->from->id,
-                'parse_mode' => $text,
+                'text' => $text,
             ]);
 
 
