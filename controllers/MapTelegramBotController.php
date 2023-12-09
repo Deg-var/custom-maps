@@ -25,7 +25,7 @@ use yii\filters\VerbFilter;
 use app\models\LoginForm;
 use app\models\ContactForm;
 
-class TelegramBotController extends Controller
+class MapTelegramBotController extends Controller
 {
     /**
      * @throws \TelegramBot\Api\Exception
@@ -37,7 +37,6 @@ class TelegramBotController extends Controller
         $myBot->setWebhook('https://custom-maps.site/map-telegram-bot/get-massage');
         sleep(5);
         dd($myBot->getWebhookInfo());
-
     }
 
     /**
