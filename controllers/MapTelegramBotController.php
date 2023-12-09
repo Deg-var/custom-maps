@@ -42,9 +42,6 @@ class MapTelegramBotController extends Controller
      */
     public function actionSetWebhook()
     {
-
-//        dd(json_decode('{"update_id":201023435,"message":{"message_id":69,"from":{"id":544792213,"is_bot":false,"first_name":"\u0410\u043b\u0435\u043a\u0441\u0430\u043d\u0434\u0440","last_name":"\u041c\u0443\u0440\u0430\u0448\u0435\u0432","username":"Degvar","language_code":"ru","is_premium":true},"chat":{"id":544792213,"first_name":"\u0410\u043b\u0435\u043a\u0441\u0430\u043d\u0434\u0440","last_name":"\u041c\u0443\u0440\u0430\u0448\u0435\u0432","username":"Degvar","type":"private"},"date":1702101851,"text":"7777","entities":[{"offset":0,"length":4,"type":"text_link","url":"https:\/\/vk.com\/deg_var"}]}}'));
-
         $myBot = new BotApi(Yii::$app->params['token']);
         $myBot->setWebhook('https://custom-maps.site/map-telegram-bot/get-massage');
         sleep(5);
@@ -89,7 +86,7 @@ class MapTelegramBotController extends Controller
             $map = Map::find()->where(['game_id' => $game->id])->orderBy('RAND()')->one();
 
             $text = 'Карта от ' . $map->user->username . "\n" . $map->name . "\n" . $map->description . "\n"
-                . 'Ссылка на сраницу на сайте - https://custom-maps.site/site/map?id=' . $map->id;
+                . 'Ссылка на страницу на сайте - https://custom-maps.site/site/map?id=' . $map->id;
 
             $myBot->sendMessage([
                 'chat_id' => $massage->from->id,
@@ -113,7 +110,7 @@ class MapTelegramBotController extends Controller
             $map = Map::find()->where(['game_id' => $game->id])->orderBy('RAND()')->one();
 
             $text = 'Карта от ' . $map->user->username . "\n" . $map->name . "\n" . $map->description . "\n"
-                . ' Ссылка на сраницу на сайте - https://custom-maps.site/site/map?id=' . $map->id;
+                . ' Ссылка на страницу на сайте - https://custom-maps.site/site/map?id=' . $map->id;
 
             $myBot->sendMessage([
                 'chat_id' => $massage->from->id,
