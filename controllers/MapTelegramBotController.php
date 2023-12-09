@@ -27,6 +27,13 @@ use app\models\ContactForm;
 
 class MapTelegramBotController extends Controller
 {
+    public function beforeAction($action)
+    {
+        $this->enableCsrfValidation = false;
+
+        return parent::beforeAction($action);
+    }
+
     /**
      * @throws \TelegramBot\Api\Exception
      * @throws \Exception
@@ -68,7 +75,7 @@ class MapTelegramBotController extends Controller
             return true;
         });
 
-//        dd($myBot->getWebhookInfo());
+        return true;
     }
 
     /**
