@@ -55,6 +55,8 @@ $config = [
                 'aoe2de' => 'site/aoe2de',
                 'warcraft3' => 'site/warcraft3',
                 'my-maps' => 'site/my-maps',
+                'map/<id:\d+>' => 'site/map',
+                'map-edit/<id:\d+>' => 'site/map-edit',
 
                 // Раздел пользователей
                 'login' => 'user/login',

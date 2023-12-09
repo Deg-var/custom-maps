@@ -12,7 +12,7 @@ foreach ($maps as $key => $map): ?>
         <div class="row">
             <div class="col-12  text-center">
                 <a class="col-12"
-                   href="/site/map?id=<?= $map->id ?>">
+                   href="/map/<?= $map->id ?>">
                     <img src="<?= !empty($map->img_link) ? $map->img_link : $map->game->default_img_url ?>" alt=""
                          style="height: 20vh">
                 </a>
@@ -24,7 +24,7 @@ foreach ($maps as $key => $map): ?>
             <div class="col-12">
                 <div class="row">
                     <a class="col-12"
-                       href="/site/map?id=<?= $map->id ?>"><?= $map->name ?></a>
+                       href="/map/<?= $map->id ?>"><?= $map->name ?></a>
                     <div class="col-12"><?= $map->description ?></div>
                 </div>
             </div>

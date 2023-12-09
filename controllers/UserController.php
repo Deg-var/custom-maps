@@ -149,7 +149,7 @@ class UserController extends Controller
      */
     public function actionUser($id)
     {
-        $user = User::find()->where(['id' => $id])->one();
+        $user = User::findOne($id);
 
         return $this->render('user', ['user' => $user]);
     }

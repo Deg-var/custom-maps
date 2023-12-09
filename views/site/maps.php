@@ -51,7 +51,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
                             <div class="col-lg-4 col-2">
                                 <div class="row">
-                                    <a class="col-12" href="/site/map?id=<?= $map->id ?>"><?= $map->name ?></a>
+                                    <a class="col-12" href="/map/<?= $map->id ?>"><?= $map->name ?></a>
                                     <div class="col-12"><?= $map->description ?></div>
                                     <div class="col-12 mt-2">Автор: <?= $map->user->username ?></div>
                                 </div>
@@ -77,7 +77,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             </div>
                             <?php if (Yii::$app->user->id === $map->user_id): ?>
                                 <div class="col-2 offset-6 text-end">
-                                    <?= Html::a('Редактировать', ['site/map-edit', 'id' => $map->id], ['class' => 'btn btn-warning']) ?>
+                                    <?= Html::a('Редактировать', ['/map-edit/'.$map->id], ['class' => 'btn btn-warning']) ?>
                                 </div>
                                 <div class="col-2 text-end">
                                     <?= Html::button(
