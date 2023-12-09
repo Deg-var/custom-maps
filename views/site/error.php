@@ -3,7 +3,8 @@
 /** @var yii\web\View $this */
 /** @var string $name */
 /** @var string $message */
-/** @var Exception$exception */
+
+/** @var Exception $exception */
 
 use yii\helpers\Html;
 
@@ -16,12 +17,15 @@ $this->title = $name;
     <div class="alert alert-danger">
         <?= nl2br(Html::encode($message)) ?>
     </div>
-
     <p>
-        The above error occurred while the Web server was processing your request.
+        Что-то пошло не так,
+        <?= Html::a('тык', [
+            '/map-telegram-bot/send-massage',
+            'url' => $this->context->request->url,
+            'code' => $this->title,
+            'message' => nl2br(Html::encode($message)),
+            'userId' => Yii::$app->user->id
+        ]) ?>
+        и Pankyxaa разберется.
     </p>
-    <p>
-        Please contact us if you think this is a server error. Thank you.
-    </p>
-
 </div>
