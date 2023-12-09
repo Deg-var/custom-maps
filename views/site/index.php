@@ -29,6 +29,9 @@ MapAsset::register($this);
             <div class="col-12 text-center mb-3">
                 <h4>Если вам понравится можете <a href="https://boosty.to/pankyxaa" target="_blank">поддержать</a></h4>
             </div>
+            <div class="col-12 text-center mb-3">
+                <h5>А еще у нас появился бот который может выдавать случайные карты которые добавлены на сайт <a href="https://t.me/custom_maps_bot" target="_blank">ТЫК</a></h5>
+            </div>
 
             <div class="col-lg-4 mb-3">
                 <h2>Новые карты</h2>

@@ -73,6 +73,16 @@ class MapTelegramBotController extends Controller
 
         $massage = $input->getMessage();
 
+        if ($massage->text === '/start') {
+            $myBot->sendMessage([
+                'chat_id' => $massage->from->id,
+                'text' => 'Дратвуйте, мы все тут рады что вы пришли!' . "\n"
+                    . 'Тыкните команды чтоб посмотреть наше сокровище' . "\n" . "\n"
+                    . '/get_rand_w3_map - Случайная карта по Варику' . "\n"
+                    . '/get_rand_aoe_map - Случайная карта по Эпохе',
+            ]);
+        }
+
         if ($massage->text === '/get_rand_aoe_map') {
             /** @var Map $map */
             $game = Game::findOne(Game::AOE2DE);
