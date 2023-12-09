@@ -2,6 +2,7 @@
 
 $params = require __DIR__ . '/params.php';
 $db = require __DIR__ . '/db.php';
+$params += require __DIR__ . '/secret.php';
 
 $config = [
     'id' => 'basic',
@@ -54,10 +55,13 @@ $config = [
                 'aoe2de' => 'site/aoe2de',
                 'warcraft3' => 'site/warcraft3',
                 'my-maps' => 'site/my-maps',
-                'user-profile' => 'site/user-profile',
-                'login' => 'site/login',
-                'logout' => 'site/logout',
-                'users' => 'site/users',
+
+                // Раздел пользователей
+                'login' => 'user/login',
+                'logout' => 'user/logout',
+                'user-profile' => 'user/user-profile',
+                'map-creators' => 'user/map-creators',
+                'user/<id:\d+>' => 'user/user',
 
                 // Раздел с полезной информацией для картоделов
                 'useful' => 'useful/index',

@@ -22,7 +22,8 @@ $this->params['breadcrumbs'][] = $this->title;
         <div class="col-12 border">
             <div class="row">
                 <div class="col-4">
-                    <img src="<?= $user->img_url ?? '/img/user-sample.png' ?>" alt="Аватарка <?= $user->username ?>" style="max-width: 100%">
+                    <img src="<?= $user->img_url ?? '/img/user-sample.png' ?>" alt="Аватарка <?= $user->username ?>"
+                         style="max-width: 100%">
                 </div>
                 <div class="col-8">
                     <p><?= $user->username ?></p>
@@ -30,10 +31,11 @@ $this->params['breadcrumbs'][] = $this->title;
                 </div>
             </div>
             <div></div>
-
-            <div class="row mt-3">
-               <?= $this->renderAjax('_maps-list',['maps'=>$user->maps]) ?>
-            </div>
+            <?php if ($user->maps): ?>
+                <div class="row mt-3">
+                    <?= $this->renderAjax('../common-components/_maps-list', ['maps' => $user->maps]) ?>
+                </div>
+            <?php endif; ?>
         </div>
     </div>
 </div>

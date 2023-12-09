@@ -41,19 +41,19 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
         'options' => ['class' => 'navbar-nav'],
         'items' => [
             ['label' => 'Главная', 'url' => ['/site/index']],
-            ['label' => 'Картоделы', 'url' => ['/site/users']],
+            ['label' => 'Картоделы', 'url' => ['/user/map-creators']],
             ['label' => 'Эпоха', 'url' => ['/site/aoe2de']],
             ['label' => 'Warcraft 3', 'url' => ['/site/warcraft3']],
             Yii::$app->user->isGuest
                 ? '' : ['label' => 'Мои карты', 'url' => ['/site/my-maps']],
             ['label' => 'Полезное', 'url' => ['/useful']],
             Yii::$app->user->isGuest
-                ? '' : ['label' => 'Редактировать профиль', 'url' => ['/site/user-profile']],
+                ? '' : ['label' => 'Редактировать профиль', 'url' => ['/user/user-profile']],
             ['label' => 'Поддержать', 'url' => 'https://boosty.to/pankyxaa', 'linkOptions' => ['target' => '_blank'],],
             Yii::$app->user->isGuest
-                ? ['label' => 'Зайти', 'url' => ['/site/login']]
+                ? ['label' => 'Зайти', 'url' => ['/user/login']]
                 : '<li class="nav-item">'
-                . Html::beginForm(['/site/logout'])
+                . Html::beginForm(['/user/logout'])
                 . Html::submitButton(
                     'Выйти (' . Yii::$app->user->identity->username . ')',
                     ['class' => 'nav-link btn btn-link logout']
