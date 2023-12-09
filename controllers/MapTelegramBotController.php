@@ -80,12 +80,8 @@ class MapTelegramBotController extends Controller
             $map = Map::find()->where(['game_id' => $game->id])->orderBy('RAND()')->one();
 
 
-            $text = 'Карта от ' . $map->user->username . "\n" . $map->name . "\n" . $map->description . "\n";
-
-//            $myBot->sendPhoto([
-//                'chat_id' => $massage->from->id,
-//                'photo' => $map->img_link,
-//            ]);
+            $text = 'Карта от ' . $map->user->username . "\n" . $map->name . "\n" . $map->description . "\n"
+                . 'https://custom-maps.site/site/map?id=' . $map->id;
 
             $myBot->sendMessage([
                 'chat_id' => $massage->from->id,
