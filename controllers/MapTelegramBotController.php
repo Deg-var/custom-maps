@@ -74,21 +74,41 @@ class MapTelegramBotController extends Controller
         $massage = $input->getMessage();
 
         if ($massage->text === '/get_rand_aoe_map') {
-
             /** @var Map $map */
             $game = Game::findOne(Game::AOE2DE);
             $map = Map::find()->where(['game_id' => $game->id])->orderBy('RAND()')->one();
-
 
             $text = 'Карта от ' . $map->user->username . "\n" . $map->name . "\n" . $map->description . "\n"
                 . 'https://custom-maps.site/site/map?id=' . $map->id;
 
             $myBot->sendMessage([
                 'chat_id' => $massage->from->id,
-                'text' => $text,
+                'text' => $map->img_link ?? $game->default_img_url,
             ]);
 
+            $myBot->sendMessage([
+                'chat_id' => $massage->from->id,
+                'text' => $text,
+            ]);
+        }
 
+        if ($massage->text === '/get_rand_w3_map') {
+            /** @var Map $map */
+            $game = Game::findOne(Game::WARCRAFT3);
+            $map = Map::find()->where(['game_id' => $game->id])->orderBy('RAND()')->one();
+
+            $text = 'Карта от ' . $map->user->username . "\n" . $map->name . "\n" . $map->description . "\n"
+                . 'https://custom-maps.site/site/map?id=' . $map->id;
+
+            $myBot->sendMessage([
+                'chat_id' => $massage->from->id,
+                'text' => $map->img_link ?? $game->default_img_url,
+            ]);
+
+            $myBot->sendMessage([
+                'chat_id' => $massage->from->id,
+                'text' => $text,
+            ]);
         }
 
 //        $myBot->sendMessage([
