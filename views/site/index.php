@@ -34,19 +34,19 @@ MapAsset::register($this);
                 <h2>Новые карты</h2>
 
                 <div class="row m-1">
-                    <?= $this->renderAjax('_maps-list', ['maps' => $newMaps]) ?>
+                    <?= $this->renderAjax('../common-components/_maps-list', ['maps' => $newMaps]) ?>
                 </div>
             </div>
             <div class="col-lg-4 mb-3">
                 <h2>Случайные карты для Эпохи</h2>
                 <div class="row m-1">
-                    <?= $this->renderAjax('_maps-list', ['maps' => $someAoe2deMaps]) ?>
+                    <?= $this->renderAjax('../common-components/_maps-list', ['maps' => $someAoe2deMaps]) ?>
                 </div>
             </div>
             <div class="col-lg-4">
                 <h2>Случайные карты для Варика</h2>
                 <div class="row m-1">
-                    <?= $this->renderAjax('_maps-list', ['maps' => $someWarcraft3Maps]) ?>
+                    <?= $this->renderAjax('../common-components/_maps-list', ['maps' => $someWarcraft3Maps]) ?>
                 </div>
             </div>
         </div>

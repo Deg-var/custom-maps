@@ -37,7 +37,7 @@ $this->params['breadcrumbs'][] = $this->title;
                                 </div>
                                 <div class="text-start forMapLike mapId-<?= $map->id ?>" id="mapId-<?= $map->id ?>"
                                      data-map-id="<?= $map->id ?>" style="position: relative; top: 30%">
-                                    <?= $this->renderAjax('_map-likes', ['map' => $map]) ?>
+                                    <?= $this->renderAjax('../common-components/_map-likes', ['map' => $map]) ?>
                                 </div>
                             </div>
 
@@ -83,7 +83,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             <h2>Комментарии</h2>
                             <div class="col-12 border border-1 p-3 comment-list" style="border-radius: 5px">
                                 <div id="forOldComments">
-                                    <?= $this->renderAjax('_map-comments', ['map' => $map]) ?>
+                                    <?= $this->renderAjax('../common-components/_map-comments', ['map' => $map]) ?>
                                 </div>
                                 <?php if (!Yii::$app->user->isGuest): ?>
                                     <div class="row border border-dark border-2">
