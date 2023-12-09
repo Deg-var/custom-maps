@@ -27,7 +27,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
     <title><?= Html::encode($this->title) ?></title>
     <?php $this->head() ?>
 </head>
-<body class="d-flex flex-column h-100 <?= str_contains(Yii::$app->controller->action->id, 'useful') ? 'bg-black' : 'bg-light' ?>">
+<body class="d-flex flex-column h-100 <?= Yii::$app->controller->id === 'useful' ? 'bg-black' : 'bg-light' ?>">
 <?php $this->beginBody() ?>
 
 <header id="header">
@@ -46,7 +46,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
             ['label' => 'Warcraft 3', 'url' => ['/site/warcraft3']],
             Yii::$app->user->isGuest
                 ? '' : ['label' => 'Мои карты', 'url' => ['/site/my-maps']],
-            ['label' => 'Полезное', 'url' => ['/site/useful']],
+            ['label' => 'Полезное', 'url' => ['/useful']],
             Yii::$app->user->isGuest
                 ? '' : ['label' => 'Редактировать профиль', 'url' => ['/site/user-profile']],
             ['label' => 'Поддержать', 'url' => 'https://boosty.to/pankyxaa', 'linkOptions' => ['target' => '_blank'],],
@@ -94,7 +94,7 @@ $this->registerLinkTag(['rel' => 'icon', 'type' => 'image/x-icon', 'href' => Yii
 
 <footer
         id="footer"
-        class="mt-auto py-3 <?= str_contains(Yii::$app->controller->action->id, 'useful') ? 'bg-black' : 'bg-light' ?>"
+        class="mt-auto py-3 <?= Yii::$app->controller->id === 'useful' ? 'bg-black' : 'bg-light' ?>"
 >
     <div class="container">
         <div class="row text-muted">

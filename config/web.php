@@ -51,6 +51,20 @@ $config = [
             'enablePrettyUrl' => true,
             'showScriptName' => false,
             'rules' => [
+                'aoe2de' => 'site/aoe2de',
+                'warcraft3' => 'site/warcraft3',
+                'my-maps' => 'site/my-maps',
+                'user-profile' => 'site/user-profile',
+                'login' => 'site/login',
+                'logout' => 'site/logout',
+                'users' => 'site/users',
+
+                // Раздел с полезной информацией для картоделов
+                'useful' => 'useful/index',
+                'useful/aoe' => 'useful/aoe',
+                'useful/warcraft3' => 'useful/warcraft3',
+
+                '/' => 'site/index',
             ],
         ],
     ],

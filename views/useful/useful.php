@@ -31,14 +31,26 @@ UsefulAsset::register($this);
 "
     >
         <div class="text-light d-flex justify-content-around" style="padding-top: 350px">
-            <a href="/site/useful-aoe" class="real-show-hint" data-hint="#real-hint-1" style="height: 150px"
-               title="Да, в эпохе">
-                <img src="/img/left-hand.jpg" alt="">
-            </a>
-            <a href="/site/useful-warcraft3" class="real-show-hint" data-hint="#real-hint-2" style="height: 150px"
-               title="Я по варику">
-                <img src="/img/right-hand.jpg" alt="">
-            </a>
+            <?= Html::a(
+                '<img src="/img/left-hand.jpg" alt="">',
+                '/useful/aoe',
+                [
+                    'class' => 'real-show-hint',
+                    'data-hint' => '#real-hint-1',
+                    'style' => 'height: 150px',
+                    'title' => 'Да, в эпохе',
+                ]
+            ) ?>
+            <?= Html::a(
+                '<img src="/img/right-hand.jpg" alt="">',
+                '/useful/warcraft3',
+                [
+                    'class' => 'real-show-hint',
+                    'data-hint' => '#real-hint-2',
+                    'style' => 'height: 150px',
+                    'title' => 'Я по варику',
+                ]
+            ) ?>
         </div>
     </div>
 </div>

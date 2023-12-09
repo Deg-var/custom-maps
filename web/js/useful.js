@@ -18,7 +18,7 @@ $(document).ready(function () {
         });
 
         document.onclick = function(e){
-            if ($(e.target).hasClass('real-hint')==false)
+            if ($(e.target).hasClass('real-hint')===false)
                 $('.real-hint').hide('fast');
             return;
         }

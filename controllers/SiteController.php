@@ -541,31 +541,4 @@ class SiteController extends Controller
         $user->ad_window_viewed = 1;
         $user->save();
     }
-
-    public function actionUseful()
-    {
-        return $this->render('useful');
-    }
-
-    public function actionUsefulWarcraft3()
-    {
-        return $this->render('useful-w3');
-    }
-
-    public function actionUsefulAoe()
-    {
-        return $this->render('useful-aoe', ['aoeIntroTextForMapCreatorViewed' => Yii::$app->user?->identity?->aoe_intro_text_for_map_creator_viewed]);
-    }
-
-    public function actionSetAoeIntroTextForMapCreatorViewed()
-    {
-        if (Yii::$app->user->isGuest) {
-            return null;
-        }
-
-        $user = User::findOne(Yii::$app->user->id);
-        $user->aoe_intro_text_for_map_creator_viewed = Yii::$app->request->post('value');
-        $user->save();
-    }
-
 }
