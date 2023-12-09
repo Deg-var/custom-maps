@@ -81,7 +81,7 @@ class MapTelegramBotController extends Controller
 
 
             $text = 'ХОЧУ!' . "\n" . 'Карта от ' . $map->user->username . "\n" . $map->name . "\n" . $map->description
-                . "\n" . ($map->img_link ?? $game->default_img_url) . ' <a href=' . $map->mod_link . '>ХОЧУ!</a>';
+                . "\n" . ($map->img_link ?? $game->default_img_url);
 
             $myBot->sendMessage([
                 'chat_id' => $massage->from->id,
