@@ -22,7 +22,7 @@ use yii\helpers\ArrayHelper;
         </div>
         <div class="col-12 text-end">
             <div class="forLikes" id="commentId-<?= $comment->id ?>">
-                <?= $this->render('_map-comment-likes', ['comment' => $comment]) ?>
+                <?= $this->render('../common-components/_map-comment-likes', ['comment' => $comment]) ?>
             </div>
         </div>
     </div>

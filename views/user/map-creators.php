@@ -31,7 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             <div class="col-8">
                                 <h4><?= $user->username ?></h4>
                                 <p><?= $user->description ?></p>
-                                <?= Html::a('Посмотреть все карты', ['site/user', 'id' => $user->id], ['class' => 'btn btn-success']) ?>
+                                <?= Html::a('Посмотреть все карты', ['user/user', 'id' => $user->id], ['class' => 'btn btn-success']) ?>
                             </div>
                         </div>
                     </div>

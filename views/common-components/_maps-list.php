@@ -30,7 +30,7 @@ foreach ($maps as $key => $map): ?>
             </div>
             <div class="text-end forMapLike col-12 mapId-<?= $map->id ?>" id="mapId-<?= $map->id ?>"
                  data-map-id="<?= $map->id ?>" style="position: relative; top: 45%">
-                <?= $this->render('_map-likes', ['map' => $map]) ?>
+                <?= $this->render('../common-components/_map-likes', ['map' => $map]) ?>
             </div>
         </div>
     </div>

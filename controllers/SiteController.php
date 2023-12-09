@@ -390,7 +390,7 @@ class SiteController extends Controller
 
         $map = Map::findOne($post['mapId']);
 
-        return $this->renderAjax('_map-comments', ['map' => $map]);
+        return $this->renderAjax('../common-components/_map-comments', ['map' => $map]);
     }
 
     /**
@@ -422,7 +422,7 @@ class SiteController extends Controller
 
         $mapComment = MapComment::findOne($post['commentId']);
 
-        return $this->renderAjax('_map-comment-likes', ['comment' => $mapComment]);
+        return $this->renderAjax('../common-components/_map-comment-likes', ['comment' => $mapComment]);
     }
 
     /**
@@ -453,7 +453,7 @@ class SiteController extends Controller
 
         $map = Map::findOne($post['mapId']);
 
-        return $this->renderAjax('_map-likes', ['map' => $map]);
+        return $this->renderAjax('../common-components/_map-likes', ['map' => $map]);
     }
 
     /**

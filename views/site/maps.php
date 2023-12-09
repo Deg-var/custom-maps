@@ -73,7 +73,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             </div>
                             <div class="text-start forMapLike col-2 mapId-<?= $map->id ?>" id="mapId-<?= $map->id ?>"
                                  data-map-id="<?= $map->id ?>" style="position: relative; top: 45%">
-                                <?= $this->renderAjax('_map-likes', ['map' => $map]) ?>
+                                <?= $this->renderAjax('../common-components/_map-likes', ['map' => $map]) ?>
                             </div>
                             <?php if (Yii::$app->user->id === $map->user_id): ?>
                                 <div class="col-2 offset-6 text-end">
