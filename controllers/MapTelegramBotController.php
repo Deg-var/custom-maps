@@ -70,7 +70,7 @@ class MapTelegramBotController extends Controller
         $massage = $input->getMessage();
 
         $myBot->sendMessage([
-            'chat_id'=>544792213,
+            'chat_id'=>$massage->from->id,
             'text'=>json_encode($massage)
             ]);
 
