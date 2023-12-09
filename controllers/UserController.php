@@ -131,13 +131,13 @@ class UserController extends Controller
      */
     public function actionMapCreators()
     {
-//        $users = User::find()
-//            ->joinWith('maps')
-//            ->where([
-//                'not',
-//                ['maps.id' => null]
-//            ])
-//            ->all();
+        $users = User::find()
+            ->joinWith('maps')
+            ->where([
+                'not',
+                ['maps.id' => null]
+            ])
+            ->all();
 
         return $this->render('map-creators', ['users' => $users]);
     }
