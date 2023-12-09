@@ -9,6 +9,7 @@ use app\models\MapLike;
 use app\models\User;
 use JetBrains\PhpStorm\NoReturn;
 use Telegram\Bot\Api;
+use Telegram\Bot\Exceptions\TelegramSDKException;
 use TelegramBot\Api\BotApi;
 use TelegramBot\Api\Client;
 use TelegramBot\Api\InvalidArgumentException;
@@ -58,22 +59,20 @@ class MapTelegramBotController extends Controller
     }
 
     /**
-     * @throws \TelegramBot\Api\Exception
-     * @throws InvalidArgumentException
-     * @throws \Exception
+     * @throws TelegramSDKException
      */
     public function actionGetMassage()
     {
-        $myBot = new Client(Yii::$app->params['token']);
+        $myBot = new Api(Yii::$app->params['token']);
 
-        //Handle text messages
-        $myBot->on(function (Update $update) use ($myBot) {
-            $message = $update->getMessage();
-            $id = $message->getChat()->getId();
-            $myBot->sendMessage($id, 'Your message: ' . $message->getText());
-        }, function () {
-            return true;
-        });
+        $input = $myBot->getWebhookUpdate();
+
+        $massage = $input->getMessage();
+
+        $myBot->sendMessage([
+            'chat_id'=>544792213,
+            'text'=>json_encode($massage)
+            ]);
 
         return true;
     }
