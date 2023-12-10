@@ -130,7 +130,7 @@ class MapTelegramBotController extends Controller
             ]);
         }
 
-        if ($massage->text === '/send-idea') {
+        if ($massage->text === '/send_idea') {
             $botUser = BotUser::findOne(['chat_id' => $massage->from->id]);
 
             if ($botUser) {
