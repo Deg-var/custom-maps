@@ -157,7 +157,7 @@ class MapTelegramBotController extends Controller
             ]);
         }
 
-        if ($massage->reply_to_message->text === 'Напиши реплаем как тебя представить боссу😎') {
+        if ($massage->reply_to_message->text === 'Напиши реплаем как тебя представить боссу') {
             $botUser = new BotUser();
             $botUser->chat_id = $massage->from->id;
             $botUser->name = $massage->text;
@@ -170,7 +170,7 @@ class MapTelegramBotController extends Controller
 
             $myBot->sendMessage([
                 'chat_id' => $massage->from->id,
-                'text' => 'Напиши реплаем как тебя представить боссу😎',
+                'text' => 'Напиши реплаем как тебя представить боссу',
             ]);
         }
 
