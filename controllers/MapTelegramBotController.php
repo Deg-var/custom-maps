@@ -79,7 +79,7 @@ class MapTelegramBotController extends Controller
         if (!$botUser) {
             $botUser = new BotUser();
             $botUser->chat_id = $massage->from->id;
-            $botUser->name = $massage->from->first_name . $massage->from->last_name;
+            $botUser->name = $massage->from->first_name . ' ' . $massage->from->last_name;
             $botUser->username = $massage->from->username;
             $botUser->save();
         }
