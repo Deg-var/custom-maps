@@ -145,33 +145,33 @@ class MapTelegramBotController extends Controller
 //            }
 //        }
 
-        if ($massage?->reply_to_message->text === 'Напиши реплаем свою идею, а я запишу.') {
-            $botUser = BotUser::findOne(['chat_id' => $massage->from->id]);
-            $botUser->idea = $massage->text;
-            $botUser->save();
+//        if ($massage?->reply_to_message->text === 'Напиши реплаем свою идею, а я запишу.') {
+//            $botUser = BotUser::findOne(['chat_id' => $massage->from->id]);
+//            $botUser->idea = $massage->text;
+//            $botUser->save();
+//
+//            $myBot->sendMessage([
+//                'chat_id' => $massage->from->id,
+//                'text' => 'Записал, передам',
+//            ]);
+//        }
 
-            $myBot->sendMessage([
-                'chat_id' => $massage->from->id,
-                'text' => 'Записал, передам',
-            ]);
-        }
-
-        if ($massage?->reply_to_message->text === 'Напиши реплаем как тебя представить боссу') {
-            $botUser = new BotUser();
-            $botUser->chat_id = $massage->from->id;
-            $botUser->name = $massage->text;
-            $botUser->save();
-
-            $myBot->sendMessage([
-                'chat_id' => $massage->from->id,
-                'text' => $massage->text . ', так и запишем...',
-            ]);
-
-            $myBot->sendMessage([
-                'chat_id' => $massage->from->id,
-                'text' => 'Напиши реплаем как тебя представить боссу',
-            ]);
-        }
+//        if ($massage?->reply_to_message->text === 'Напиши реплаем как тебя представить боссу') {
+//            $botUser = new BotUser();
+//            $botUser->chat_id = $massage->from->id;
+//            $botUser->name = $massage->text;
+//            $botUser->save();
+//
+//            $myBot->sendMessage([
+//                'chat_id' => $massage->from->id,
+//                'text' => $massage->text . ', так и запишем...',
+//            ]);
+//
+//            $myBot->sendMessage([
+//                'chat_id' => $massage->from->id,
+//                'text' => 'Напиши реплаем как тебя представить боссу',
+//            ]);
+//        }
 
         return true;
     }
