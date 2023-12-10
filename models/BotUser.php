@@ -10,6 +10,8 @@ use yii\db\ActiveRecord;
  * @property int $id
  * @property int $chat_id
  * @property string $name
+ * @property string $username
+ * @property int $last_massage_id
  */
 class BotUser extends ActiveRecord
 {

@@ -3,9 +3,9 @@
 use yii\db\Migration;
 
 /**
- * Handles adding columns to table `{{%bot_users}}`.
+ * Class m231210_100248_add_last_massage_id_to_bot_users_table
  */
-class m231210_094557_add_username_column_to_bot_users_table extends Migration
+class m231210_100248_add_last_massage_id_to_bot_users_table extends Migration
 {
     /**
      * {@inheritdoc}
@@ -14,8 +14,8 @@ class m231210_094557_add_username_column_to_bot_users_table extends Migration
     {
         $this->addColumn(
             'bot_users',
-            'username',
-            $this->text()
+            'last_massage_id',
+            $this->bigInteger()
         );
     }
 
