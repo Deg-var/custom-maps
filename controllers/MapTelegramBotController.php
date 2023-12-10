@@ -151,6 +151,11 @@ class MapTelegramBotController extends Controller
             }
 
             if ($massage->reply_to_message?->text === 'Напиши реплаем свою идею, а я запишу.') {
+                $myBot->sendMessage([
+                    'chat_id' => $massage->from->id,
+                    'text' => 'Записал, передам',
+                ]);
+
                 $botUserIdea = new BotUserIdea();
                 $botUserIdea->idea = $massage->text;
                 $botUserIdea->bot_user_id = $botUser->id;
