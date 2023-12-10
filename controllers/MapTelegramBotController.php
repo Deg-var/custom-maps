@@ -161,6 +161,9 @@ class MapTelegramBotController extends Controller
                     'text' => 'Записал, передам',
                 ]);
             }
+
+            $botUser->last_massage_id = $massage->message_id;
+            $botUser->save();
         }
 
         return true;
