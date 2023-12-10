@@ -2,6 +2,7 @@
 
 namespace app\controllers;
 
+use app\models\BotUsersIdeas;
 use app\models\Game;
 use app\models\Map;
 use app\models\MapComment;
@@ -100,7 +101,7 @@ class MapTelegramBotController extends Controller
 
             $myBot->sendMessage([
                 'chat_id' => $massage->from->id,
-                'text' =>  'Ссылка на мод ' . $map->mod_link,
+                'text' => 'Ссылка на мод ' . $map->mod_link,
             ]);
         }
 
@@ -124,14 +125,30 @@ class MapTelegramBotController extends Controller
 
             $myBot->sendMessage([
                 'chat_id' => $massage->from->id,
-                'text' =>  'Ссылка на мод ' . $map->mod_link,
+                'text' => 'Ссылка на мод ' . $map->mod_link,
             ]);
         }
 
-//        $myBot->sendMessage([
-//            'chat_id'=>$massage->from->id,
-//            'text'=>json_encode($massage)
-//            ]);
+        if ($massage->text === '/send-idea') {
+            $botUser = BotUsersIdeas::findOne(['chat_id' => $massage->from->id]);
+
+            if ($botUser) {
+                $myBot->sendMessage([
+                    'chat_id' => $massage->from->id,
+                    'text' => 'Напиши реплаем свою идею, а запишу.',
+                ]);
+            } else {
+                $myBot->sendMessage([
+                    'chat_id' => $massage->from->id,
+                    'text' => 'Напиши реплаем как тебя представить боссу😎',
+                ]);
+            }
+        }
+
+        $myBot->sendMessage([
+            'chat_id' => $massage->from->id,
+            'text' => json_encode($massage),
+        ]);
 
         return true;
     }
