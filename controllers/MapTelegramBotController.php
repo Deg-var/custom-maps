@@ -72,7 +72,7 @@ class MapTelegramBotController extends Controller
 
         $massage = $input->getMessage();
 
-        if ($massage->text === '/start') {
+        if ($massage?->text === '/start') {
             $myBot->sendMessage([
                 'chat_id' => $massage->from->id,
                 'text' => 'Дратвуйте, мы все тут рады что вы пришли!' . "\n"
@@ -82,7 +82,7 @@ class MapTelegramBotController extends Controller
             ]);
         }
 
-        if ($massage->text === '/get_rand_aoe_map') {
+        if ($massage?->text === '/get_rand_aoe_map') {
             /** @var Map $map */
             $game = Game::findOne(Game::AOE2DE);
             $map = Map::find()->where(['game_id' => $game->id])->orderBy('RAND()')->one();
@@ -106,7 +106,7 @@ class MapTelegramBotController extends Controller
             ]);
         }
 
-        if ($massage->text === '/get_rand_w3_map') {
+        if ($massage?->text === '/get_rand_w3_map') {
             /** @var Map $map */
             $game = Game::findOne(Game::WARCRAFT3);
             $map = Map::find()->where(['game_id' => $game->id])->orderBy('RAND()')->one();
@@ -145,7 +145,7 @@ class MapTelegramBotController extends Controller
 //            }
 //        }
 
-        if ($massage->reply_to_message->text === 'Напиши реплаем свою идею, а я запишу.') {
+        if ($massage?->reply_to_message->text === 'Напиши реплаем свою идею, а я запишу.') {
             $botUser = BotUser::findOne(['chat_id' => $massage->from->id]);
             $botUser->idea = $massage->text;
             $botUser->save();
@@ -156,7 +156,7 @@ class MapTelegramBotController extends Controller
             ]);
         }
 
-        if ($massage->reply_to_message->text === 'Напиши реплаем как тебя представить боссу') {
+        if ($massage?->reply_to_message->text === 'Напиши реплаем как тебя представить боссу') {
             $botUser = new BotUser();
             $botUser->chat_id = $massage->from->id;
             $botUser->name = $massage->text;
