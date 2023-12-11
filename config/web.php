@@ -56,6 +56,7 @@ $config = [
                 'warcraft3' => 'site/warcraft3',
                 'my-maps' => 'site/my-maps',
                 'map/<id:\d+>' => 'site/map',
+                'site/map/<id:\d+>' => 'site/map',
                 'map-edit/<id:\d+>' => 'site/map-edit',
 
                 // Раздел пользователей
@@ -64,6 +65,8 @@ $config = [
                 'user-profile' => 'user/user-profile',
                 'map-creators' => 'user/map-creators',
                 'user/<id:\d+>' => 'user/user',
+                'site/user/<id:\d+>' => 'user/user',
+                'site/users' => 'user/map-creators',
 
                 // Раздел с полезной информацией для картоделов
                 'useful' => 'useful/index',
