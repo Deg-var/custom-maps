@@ -62,6 +62,7 @@ $config = [
                 // Раздел пользователей
                 'login' => 'user/login',
                 'logout' => 'user/logout',
+                'sing-up' => 'user/sing-up',
                 'user-profile' => 'user/user-profile',
                 'map-creators' => 'user/map-creators',
                 'user/<id:\d+>' => 'user/user',
