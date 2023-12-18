@@ -202,7 +202,7 @@ class MapTelegramBotController extends Controller
      * @throws InvalidArgumentException
      * @throws \Exception
      */
-    public function actionSendMassage()
+    public function actionSendMassage(): Response
     {
         $myBot = new BotApi(Yii::$app->params['token']);
 
@@ -211,6 +211,38 @@ class MapTelegramBotController extends Controller
             json_encode(Yii::$app->request->get())
         );
 
+        return $this->goHome();
+    }
+
+    /**
+     * @throws \Exception
+     */
+    public function actionSendInfoMassage(): Response|null
+    {
+        return null;
+
+        $myBot = new BotApi(Yii::$app->params['token']);
+
+        $botUsers = BotUser::find()
+            ->select(['chat_id'])
+            ->distinct('chat_id')
+            ->all();
+
+        if (count($botUsers)) {
+            $myBot = new Api(Yii::$app->params['token'], true);
+            foreach ($botUsers as $botUser) {
+                $myBot->sendMessage([
+                    'chat_id' => $botUser->chat_id,
+                    'text' => 'Уважаемые пользователи. 
+                    Это сообщение от @Degvar, он же Pankyxaa. 
+                    В боте появилась возможность подписаться на рассылку новых карт, 
+                    сообщения будут приходить при добавлении новой карты на сайт.' . "\n"
+                        . 'Для управления подпиской используйте команды' . "\n"
+                        . '/get_new_maps - Подписаться на рассылку новых карт' . "\n"
+                        . '/dont_get_new_maps - Отписаться от рассылки новых карт' . "\n",
+                ]);
+            }
+        }
         return $this->goHome();
     }
 

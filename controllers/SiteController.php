@@ -229,10 +229,14 @@ class SiteController extends Controller
             $map->user_id = Yii::$app->user->id;
             $map->save();
 
-            $botUsers = BotUser::find()->where(['get_new_maps' => 1])->all();
+            $botUsers = BotUser::find()
+                ->select(['chat_id'])
+                ->where(['get_new_maps' => 1])
+                ->distinct('chat_id')
+                ->all();
 
             if (count($botUsers)) {
-                $myBot = new Api(Yii::$app->params['token']);
+                $myBot = new Api(Yii::$app->params['token'], true);
 
                 foreach ($botUsers as $botUser) {
                     /** @var BotUser $botUser */
