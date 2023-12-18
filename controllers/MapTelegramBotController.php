@@ -90,6 +90,8 @@ class MapTelegramBotController extends Controller
                     'chat_id' => $massage->from->id,
                     'text' => 'Дратвуйте, мы все тут рады что вы пришли!' . "\n"
                         . 'Тыкните команды чтоб посмотреть наше сокровище' . "\n" . "\n"
+                        . '/get_new_maps - Подписаться на рассылку новых карт' . "\n"
+                        . '/dont_get_new_maps - Отписаться от рассылки новых карт' . "\n"
                         . '/send_idea - послать идею для кастомки' . "\n"
                         . '/get_rand_w3_map - Случайная карта по Варику' . "\n"
                         . '/get_rand_aoe_map - Случайная карта по Эпохе',
