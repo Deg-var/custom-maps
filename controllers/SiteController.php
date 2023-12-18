@@ -2,10 +2,13 @@
 
 namespace app\controllers;
 
+use app\models\BotUser;
 use app\models\Map;
 use app\models\MapComment;
 use app\models\MapCommentLike;
 use app\models\MapLike;
+use Telegram\Bot\Api;
+use Telegram\Bot\Exceptions\TelegramSDKException;
 use Throwable;
 use Yii;
 use yii\data\Pagination;
@@ -205,6 +208,7 @@ class SiteController extends Controller
      *
      * @return Response
      * @throws HttpException
+     * @throws TelegramSDKException
      */
     public function actionNewMapCreate(): Response
     {
@@ -224,6 +228,35 @@ class SiteController extends Controller
             $map->game_id = $post['game_id'];
             $map->user_id = Yii::$app->user->id;
             $map->save();
+
+            $botUsers = BotUser::find()->where(['get_new_maps' => 1])->all();
+
+            if (count($botUsers)) {
+                $myBot = new Api(Yii::$app->params['token']);
+
+                foreach ($botUsers as $botUser) {
+                    /** @var BotUser $botUser */
+                    $text = 'Карта от ' . $map->user?->username . "\n" . $map->name . "\n" . $map->description . "\n"
+                        . 'Ссылка на страницу на сайте - https://custom-maps.site/map/' . $map->id;
+
+                    $myBot->sendMessage([
+                        'chat_id' => $botUser->chat_id,
+                        'text' => $map->img_link ?? $map->game?->default_img_url,
+                    ]);
+
+                    $myBot->sendMessage([
+                        'chat_id' => $botUser->chat_id,
+                        'text' => $text,
+                    ]);
+
+                    $myBot->sendMessage([
+                        'chat_id' => $botUser->chat_id,
+                        'text' => 'Ссылка на мод ' . $map->mod_link,
+                    ]);
+                }
+            }
+
+
             throw new HttpException(200, null);
         }
 

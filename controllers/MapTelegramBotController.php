@@ -120,6 +120,30 @@ class MapTelegramBotController extends Controller
                 ]);
             }
 
+            if ($massage->text === '/get_new_maps') {
+                /** @var Map $map */
+
+                $botUser->get_new_maps = 1;
+                $botUser->save();
+
+                $myBot->sendMessage([
+                    'chat_id' => $massage->from->id,
+                    'text' => 'Теперь ты Будешь получать уведомления о новых картах. МУАХАХА!!!',
+                ]);
+            }
+
+            if ($massage->text === '/dont_get_new_maps') {
+                /** @var Map $map */
+
+                $botUser->get_new_maps = 0;
+                $botUser->save();
+
+                $myBot->sendMessage([
+                    'chat_id' => $massage->from->id,
+                    'text' => 'Я тебя понял... Я тебе это еще припомню!!!',
+                ]);
+            }
+
             if ($massage->text === '/get_rand_w3_map') {
                 /** @var Map $map */
                 $game = Game::findOne(Game::WARCRAFT3);

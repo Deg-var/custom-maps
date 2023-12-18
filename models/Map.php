@@ -21,8 +21,7 @@ use yii\db\ActiveRecord;
  */
 class Map extends ActiveRecord
 {
-
-    public function beforeSave($insert)
+    public function beforeSave($insert): bool
     {
 
         if (str_contains($this->video_link, 'youtube')) {
@@ -65,9 +64,9 @@ class Map extends ActiveRecord
     {
         return $this->hasOne(Game::class, ['id' => 'game_id']);
     }
-    
+
     public function getUser()
     {
-        return $this->hasOne(User::class,['id'=>'user_id']);
+        return $this->hasOne(User::class, ['id' => 'user_id']);
     }
 }

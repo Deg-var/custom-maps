@@ -58,6 +58,7 @@ $config = [
                 'map/<id:\d+>' => 'site/map',
                 'site/map/<id:\d+>' => 'site/map',
                 'map-edit/<id:\d+>' => 'site/map-edit',
+                'new-map' => 'site/new-map',
 
                 // Раздел пользователей
                 'login' => 'user/login',
@@ -77,6 +78,9 @@ $config = [
 
                 '/' => 'site/index',
             ],
+        ],
+        'telegramBotComponent' => [
+            'class' => 'app\components\TelegramBotComponent'
         ],
     ],
     'params' => $params,

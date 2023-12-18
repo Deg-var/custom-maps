@@ -31,7 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-login">
     <?php if (!Yii::$app->user->isGuest): ?>
-        <?= Html::a('Добавить карту', ['site/new-map'], ['class' => 'btn btn-success']) ?>
+        <?= Html::a('Добавить карту', ['new-map'], ['class' => 'btn btn-success']) ?>
     <?php endif; ?>
     <h1><?= Html::encode($this->title) ?></h1>
     <div class="row mt-3">

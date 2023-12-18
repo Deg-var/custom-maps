@@ -12,6 +12,7 @@ use yii\db\ActiveRecord;
  * @property string $name
  * @property string $username
  * @property int $last_massage_id
+ * @property int $get_new_maps
  */
 class BotUser extends ActiveRecord
 {
