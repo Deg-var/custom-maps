@@ -248,10 +248,14 @@ class SiteController extends Controller
                         'text' => $map->img_link ?? $map->game?->default_img_url,
                     ]);
 
+                    sleep(1);
+
                     $myBot->sendMessage([
                         'chat_id' => $botUser->chat_id,
                         'text' => $text,
                     ]);
+
+                    sleep(1);
 
                     $myBot->sendMessage([
                         'chat_id' => $botUser->chat_id,
