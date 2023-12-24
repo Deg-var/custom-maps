@@ -57,4 +57,8 @@ $(document).ready(function () {
             window.location.href = '/site/my-maps';
         })
     })
+
+    $(document).on('change', '#mapsPerPage', function (e) {
+        location.href = location.origin + location.pathname + '?per-page=' + $(this).val()
+    })
 })

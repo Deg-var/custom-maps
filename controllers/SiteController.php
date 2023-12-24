@@ -94,7 +94,7 @@ class SiteController extends Controller
 
         $query = Map::find()->where(['user_id' => Yii::$app->user->id]);
         $countQuery = clone $query;
-        $pages = new Pagination(['totalCount' => $countQuery->count(), 'pageSize' => 5]);
+        $pages = new Pagination(['totalCount' => $countQuery->count(), 'pageSize' => Yii::$app->request->get('per-page') ?? 5]);
         $maps = $query->offset($pages->offset)
             ->limit($pages->limit)
             ->all();
@@ -373,7 +373,7 @@ class SiteController extends Controller
     {
         $query = Map::find()->where(['game_id' => 1]);
         $countQuery = clone $query;
-        $pages = new Pagination(['totalCount' => $countQuery->count(), 'pageSize' => 5]);
+        $pages = new Pagination(['totalCount' => $countQuery->count(), 'pageSize' => Yii::$app->request->get('per-page') ?? 5]);
         $maps = $query->offset($pages->offset)
             ->limit($pages->limit)
             ->all();
@@ -393,7 +393,7 @@ class SiteController extends Controller
     {
         $query = Map::find()->where(['game_id' => 2]);
         $countQuery = clone $query;
-        $pages = new Pagination(['totalCount' => $countQuery->count(), 'pageSize' => 5]);
+        $pages = new Pagination(['totalCount' => $countQuery->count(), 'pageSize' => Yii::$app->request->get('per-page') ?? 5]);
         $maps = $query->offset($pages->offset)
             ->limit($pages->limit)
             ->all();

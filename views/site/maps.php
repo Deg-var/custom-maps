@@ -33,7 +33,16 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php if (!Yii::$app->user->isGuest): ?>
         <?= Html::a('Добавить карту', ['new-map'], ['class' => 'btn btn-success']) ?>
     <?php endif; ?>
-    <h1><?= Html::encode($this->title) ?></h1>
+    <div class="row">
+        <div class="col-6"><h1><?= Html::encode($this->title) ?></h1></div>
+        <div class="col-6 text-end">Карт на страницу <?= Html::dropDownList(
+                'per-page',
+                Yii::$app->request->get('per-page') ?? 5,
+                ['5' => 5, '10' => 10, '15' => 15, '20' => 20],
+                ['id' => 'mapsPerPage']
+            ) ?></div>
+    </div>
+
     <div class="row mt-3">
         <div class="col-12 border">
             <div class="row">
