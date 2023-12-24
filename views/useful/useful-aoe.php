@@ -8,7 +8,7 @@ use app\models\Map;
  * @var $aoeIntroTextForMapCreatorViewed ,
  */
 
-$this->title = 'My Yii Application';
+$this->title = 'Полезное для AoE2DE';
 if (!$aoeIntroTextForMapCreatorViewed) {
     AoeUsefulAsset::register($this);
 }

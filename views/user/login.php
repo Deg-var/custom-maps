@@ -9,7 +9,7 @@ use yii\bootstrap5\Html;
  * @var app\models\LoginForm $model
  */
 
-$this->title = 'Login';
+$this->title = 'Бобро пожаловать';
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 <div class="site-login">

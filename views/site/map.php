@@ -18,7 +18,7 @@ use yii\bootstrap5\Html;
 CommentAsset::register($this);
 MapAsset::register($this);
 
-$this->title = $map->name ?? null;
+$this->title = $map->name ?? 'Какая-то карта';
 
 $this->params['breadcrumbs'][] = $this->title;
 ?>
@@ -33,7 +33,8 @@ $this->params['breadcrumbs'][] = $this->title;
                             <div class="col-lg-2 col-4 text-center">
                                 <div>
                                     <img src="<?= !empty($map->img_link) ? $map->img_link : $map->game->default_img_url ?>"
-                                         alt="" style="height: 20vh; width: 100%">
+                                         class="map-img"
+                                         alt="">
                                 </div>
                                 <div class="text-start forMapLike mapId-<?= $map->id ?>" id="mapId-<?= $map->id ?>"
                                      data-map-id="<?= $map->id ?>" style="position: relative; top: 30%">
@@ -65,7 +66,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             </div>
                             <?php if ($map->user_id === Yii::$app->user->id): ?>
                                 <div class="col-2 offset-8 text-end">
-                                    <?= Html::a('Редактировать', ['/map-edit/'.$map->id], ['class' => 'btn btn-warning']) ?>
+                                    <?= Html::a('Редактировать', ['/map-edit/' . $map->id], ['class' => 'btn btn-warning']) ?>
                                 </div>
                                 <div class="col-2 text-end">
                                     <?= Html::button('Не удаляй меня, семпай!!',

@@ -13,8 +13,8 @@ foreach ($maps as $key => $map): ?>
             <div class="col-12  text-center">
                 <a class="col-12"
                    href="/map/<?= $map->id ?>">
-                    <img src="<?= !empty($map->img_link) ? $map->img_link : $map->game->default_img_url ?>" alt=""
-                         style="height: 20vh">
+                    <img src="<?= !empty($map->img_link) ? $map->img_link : $map->game->default_img_url ?>"
+                         class="map-img" alt="">
                 </a>
                 <div class="row">
                     <div class="col-auto">Игра:</div>

@@ -8,7 +8,7 @@
 
 use yii\helpers\Html;
 
-$this->title = $name;
+$this->title = 'Ошибочка';
 ?>
 <div class="site-error">
 

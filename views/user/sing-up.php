@@ -9,9 +9,9 @@ use yii\bootstrap5\ActiveForm;
 use yii\bootstrap5\Html;
 
 if (Yii::$app->user->isGuest) {
-    $this->title = 'Регистрация';
+    $this->title = 'Регистрация бомжа';
 } else {
-    $this->title = 'Редактирование профиля';
+    $this->title = 'Редактирование уже не бомжа';
     $model = Yii::$app->user->identity;
 }
 

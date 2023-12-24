@@ -15,7 +15,7 @@ use yii\bootstrap5\ActiveForm;
 
 MapAsset::register($this);
 
-$this->title = $map->name ?? null;
+$this->title = $map->name ?? 'Новая карта';
 $this->params['breadcrumbs'][] = $map->name ?? 'Новая карта';
 
 ?>

@@ -8,3 +8,15 @@
     margin-left: auto;
     margin-right: auto;
 }
+
+.map-img {
+    height: 20vh;
+    width: 100%
+}
+
+
+@media screen and (min-width: 2000px) {
+    .container {
+        max-width: 80vw;
+    }
+}

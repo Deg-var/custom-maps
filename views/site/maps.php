@@ -42,7 +42,8 @@ $this->params['breadcrumbs'][] = $this->title;
                         <div class="row">
                             <div class="col-lg-2 col-4  text-center">
                                 <img src="<?= !empty($map->img_link) ? $map->img_link : $map->game->default_img_url ?>"
-                                     alt="" style="height: 20vh; width: 100%">
+                                     class="map-img"
+                                     alt="">
                                 <div class="row">
                                     <div class="col-auto">Игра:</div>
                                     <div class="col-auto text-start"><?= $map->game?->name ?></div>
@@ -77,7 +78,7 @@ $this->params['breadcrumbs'][] = $this->title;
                             </div>
                             <?php if (Yii::$app->user->id === $map->user_id): ?>
                                 <div class="col-2 offset-6 text-end">
-                                    <?= Html::a('Редактировать', ['/map-edit/'.$map->id], ['class' => 'btn btn-warning']) ?>
+                                    <?= Html::a('Редактировать', ['/map-edit/' . $map->id], ['class' => 'btn btn-warning']) ?>
                                 </div>
                                 <div class="col-2 text-end">
                                     <?= Html::button(

@@ -12,7 +12,7 @@ use yii\helpers\Html;
  * @var Map[] $someWarcraft3Maps ,
  */
 
-$this->title = 'My Yii Application';
+$this->title = 'Выбери таблетку';
 
 UsefulAsset::register($this);
 
