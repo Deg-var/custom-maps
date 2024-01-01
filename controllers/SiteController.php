@@ -241,7 +241,8 @@ class SiteController extends Controller
                 foreach ($botUsers as $botUser) {
                     /** @var BotUser $botUser */
                     $text = 'Карта от ' . $map->user?->username . "\n" . $map->name . "\n" . $map->description . "\n"
-                        . 'Ссылка на страницу на сайте - https://custom-maps.site/map/' . $map->id;
+                        . 'Ссылка на страницу на сайте - https://custom-maps.site/map/' . $map->id . "\n"
+                        . 'Ссылка на мод ' . $map->mod_link;
 
                     $myBot->sendMessage([
                         'chat_id' => $botUser->chat_id,
@@ -253,13 +254,6 @@ class SiteController extends Controller
                     $myBot->sendMessage([
                         'chat_id' => $botUser->chat_id,
                         'text' => $text,
-                    ]);
-
-                    sleep(1);
-
-                    $myBot->sendMessage([
-                        'chat_id' => $botUser->chat_id,
-                        'text' => 'Ссылка на мод ' . $map->mod_link,
                     ]);
                 }
             }
