@@ -27,7 +27,7 @@ $this->params['breadcrumbs'][] = $map->name ?? 'Новая карта';
     ]) ?>
     <?= $form->field($map, 'game_id')->dropDownList([1 => 'AoE2DE', 2 => 'Warcraft 3'], ['id' => 'mapGameId']) ?>
     <?= $form->field($map, 'name')->textInput(['id' => 'mapName']) ?>
-    <?= $form->field($map, 'description')->textInput(['id' => 'mapDescription']) ?>
+    <?= $form->field($map, 'description')->textarea(['id' => 'mapDescription']) ?>
     <?= $form->field($map, 'img_link')->textInput(['id' => 'mapImgLink']) ?>
     <?= $form->field($map, 'video_link')->textInput(['id' => 'mapVideoLink']) ?>
     <?= $form->field($map, 'mod_link')->textInput(['id' => 'mapModLink']) ?>
