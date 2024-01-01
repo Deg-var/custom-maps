@@ -104,7 +104,8 @@ class MapTelegramBotController extends Controller
                 $map = Map::find()->where(['game_id' => $game->id])->orderBy('RAND()')->one();
 
                 $text = 'Карта от ' . $map->user->username . "\n" . $map->name . "\n" . $map->description . "\n"
-                    . 'Ссылка на страницу на сайте - https://custom-maps.site/map/' . $map->id;
+                    . 'Ссылка на страницу на сайте - https://custom-maps.site/map/' . $map->id . "\n"
+                    . 'Ссылка на мод ' . $map->mod_link;
 
                 $myBot->sendMessage([
                     'chat_id' => $massage->from->id,
@@ -114,11 +115,6 @@ class MapTelegramBotController extends Controller
                 $myBot->sendMessage([
                     'chat_id' => $massage->from->id,
                     'text' => $text,
-                ]);
-
-                $myBot->sendMessage([
-                    'chat_id' => $massage->from->id,
-                    'text' => 'Ссылка на мод ' . $map->mod_link,
                 ]);
             }
 
