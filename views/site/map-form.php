@@ -32,14 +32,17 @@ $this->params['breadcrumbs'][] = $map->name ?? 'Новая карта';
     <?= $form->field($map, 'video_link')->textInput(['id' => 'mapVideoLink']) ?>
     <?= $form->field($map, 'mod_link')->textInput(['id' => 'mapModLink']) ?>
 
-    <div class="form-group">
-        <div class="col-lg-offset-1 col-lg-11">
+    <div class="form-group row">
+        <div class="col">
             <?= Html::button('Сохранить', [
                 'class' => 'btn btn-primary',
                 'id' => 'submitNewMap',
                 'data-is-new' => $map->id ? 'false' : 'true',
                 'data-map-id' => $map->id
             ]) ?>
+        </div>
+        <div class="col text-end">
+            <span class="loader" style="display: none"></span>
         </div>
     </div>
 

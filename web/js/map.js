@@ -14,6 +14,8 @@ $(document).ready(function () {
         let mapName = $('#mapName')
         mapName.siblings('.invalid-feedback').hide()
         console.log(submitNewMap.attr('data-is-new'))
+        submitNewMap.attr('disabled',true)
+        $('.loader').show();
         if (submitNewMap.attr('data-is-new') === 'true') {
             if (mapName.val() !== '') {
                 $.post('/site/new-map-create', {
