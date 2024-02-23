@@ -1,11 +1,14 @@
 <?php
 
+use app\assets\MapCssAsset;
 use app\models\Map;
 use yii\helpers\ArrayHelper;
 
 /**
  * @var Map $map
  */
+
+MapCssAsset::register($this);
 
 ?>
 <div class="mapLikeBtn" data-map-id="<?= $map->id ?>">

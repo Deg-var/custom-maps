@@ -35,7 +35,7 @@ MapAsset::register($this);
             </div>
             <div class="col-12 text-center mb-3">
                 <h6>Если если хотите следить доработками для этого сайта то можете почитать <a
-                            href="https://boosty.to/app/settings/social" target="_blank">бусти</a>, это бесплатно</h6>
+                            href="https://boosty.to/pankyxaa" target="_blank">бусти</a>, это бесплатно</h6>
             </div>
 
             <div class="col-lg-4 mb-3">

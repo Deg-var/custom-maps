@@ -79,6 +79,9 @@ $config = [
                 '/' => 'site/index',
             ],
         ],
+        'MapComponent' => [
+            'class' => 'app\components\MapComponent',
+        ],
         'telegramBotComponent' => [
             'class' => 'app\components\TelegramBotComponent'
         ],

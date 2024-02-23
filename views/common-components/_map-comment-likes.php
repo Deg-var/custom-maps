@@ -1,11 +1,15 @@
 <?php
 
+use app\assets\MapCssAsset;
 use app\models\MapComment;
 use yii\helpers\ArrayHelper;
 
 /**
  * @var MapComment $comment
  */
+
+MapCssAsset::register($this);
+
 ?>
 <div class="commentLikeBtn" data-comment-id="<?= $comment->id ?>">
     <svg fill="#000000" height="20px" width="20px" version="1.1" id="Capa_1"

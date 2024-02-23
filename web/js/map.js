@@ -1,4 +1,8 @@
 $(document).ready(function () {
+    let getParamsStr = '';
+    let getParamsArr = location.search.replace('?', '')?.split('&')
+    let getParamsObj = {};
+
     $(document).on('click', '.mapLikeBtn', function () {
         let mapLike = $(this);
 
@@ -14,7 +18,7 @@ $(document).ready(function () {
         let mapName = $('#mapName')
         mapName.siblings('.invalid-feedback').hide()
         console.log(submitNewMap.attr('data-is-new'))
-        submitNewMap.attr('disabled',true)
+        submitNewMap.attr('disabled', true)
         $('.loader').show();
         if (submitNewMap.attr('data-is-new') === 'true') {
             if (mapName.val() !== '') {
@@ -48,7 +52,6 @@ $(document).ready(function () {
                 mapName.siblings('.invalid-feedback').show().text('Введите название, это обязательно')
             }
         }
-
     })
 
     $(document).on('click', '.delete-map', function () {
@@ -61,6 +64,29 @@ $(document).ready(function () {
     })
 
     $(document).on('change', '#mapsPerPage', function (e) {
-        location.href = location.origin + location.pathname + '?per-page=' + $(this).val()
+        setNewGetParams('per-page', e.target.value)
     })
+
+    $(document).on('change', '#mapsSort', function (e) {
+        setNewGetParams('sort', e.target.value)
+    })
+
+    function setNewGetParams(param, value) {
+        getParamsArr.map(function (param) {
+            let currentParam = param.split('=')
+            if (currentParam[0]) {
+                getParamsObj[currentParam[0]] = currentParam[1]
+            }
+        })
+
+        getParamsObj[param] = value
+
+        for (let param in getParamsObj) {
+            if (param !== '0') {
+                getParamsStr += `${param}=${getParamsObj[param]}&`;
+            }
+        }
+
+        location.href = location.origin + location.pathname + '?' + getParamsStr
+    }
 })

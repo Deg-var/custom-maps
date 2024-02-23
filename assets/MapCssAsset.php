@@ -15,15 +15,9 @@ use yii\web\AssetBundle;
  * @author Qiang Xue <qiang.xue@gmail.com>
  * @since 2.0
  */
-class MapAsset extends AssetBundle
+class MapCssAsset extends AssetBundle
 {
-    public $js = [
-        'js/map.js'
-    ];
-
-    public $depends = [
-        'yii\web\YiiAsset',
-        'yii\bootstrap5\BootstrapAsset',
-        '\app\assets\MapCssAsset'
+    public $css = [
+        'css/maps.css',
     ];
 }

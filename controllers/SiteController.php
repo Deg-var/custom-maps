@@ -2,7 +2,9 @@
 
 namespace app\controllers;
 
+use app\components\MapsComponent;
 use app\models\BotUser;
+use app\models\Game;
 use app\models\Map;
 use app\models\MapComment;
 use app\models\MapCommentLike;
@@ -70,9 +72,9 @@ class SiteController extends Controller
      */
     public function actionIndex(): string
     {
-        $newMaps = Map::find()->limit(3)->orderBy(['id' => SORT_DESC])->all();
-        $someAoe2deMaps = Map::find()->where(['game_id' => 1])->orderBy('RAND()')->limit(3)->all();
-        $someWarcraft3Maps = Map::find()->where(['game_id' => 2])->orderBy('RAND()')->limit(3)->all();
+        $newMaps = Map::find()->limit(5)->orderBy(['id' => SORT_DESC])->all();
+        $someAoe2deMaps = Map::find()->where(['game_id' => 1])->orderBy('RAND()')->limit(5)->all();
+        $someWarcraft3Maps = Map::find()->where(['game_id' => 2])->orderBy('RAND()')->limit(5)->all();
 
         return $this->render('index', [
             'newMaps' => $newMaps,
@@ -93,21 +95,23 @@ class SiteController extends Controller
         }
 
         $query = Map::find()->where(['user_id' => Yii::$app->user->id]);
-        $countQuery = clone $query;
-        $pages = new Pagination(['totalCount' => $countQuery->count(), 'pageSize' => Yii::$app->request->get('per-page') ?? 5]);
-        $maps = $query->offset($pages->offset)
-            ->limit($pages->limit)
-            ->all();
+
+        $serviceResponse = (new MapsComponent())->getQueryMaps(
+            $query,
+            Yii::$app->request->get('per-page'),
+            (int)Yii::$app->request->get('sort')
+        );
 
         return $this->render('maps', [
-            'maps' => $maps,
-            'pages' => $pages,
+            'maps' => $serviceResponse['maps'],
+            'pages' => $serviceResponse['pages'],
         ]);
     }
 
     /**
      * Одна карта
      *
+     * @param $id
      * @return string
      */
     public function actionMap($id): string
@@ -120,6 +124,7 @@ class SiteController extends Controller
     /**
      * Форма редактирование карты
      *
+     * @param $id
      * @return Response|string
      */
     public function actionMapEdit($id): Response|string
@@ -365,16 +370,17 @@ class SiteController extends Controller
      */
     public function actionAoe2de(): string
     {
-        $query = Map::find()->where(['game_id' => 1]);
-        $countQuery = clone $query;
-        $pages = new Pagination(['totalCount' => $countQuery->count(), 'pageSize' => Yii::$app->request->get('per-page') ?? 5]);
-        $maps = $query->offset($pages->offset)
-            ->limit($pages->limit)
-            ->all();
+        $query = Map::find()->where(['game_id' => Game::AOE2DE]);
+
+        $serviceResponse = (new MapsComponent())->getQueryMaps(
+            $query,
+            Yii::$app->request->get('per-page'),
+            (int)Yii::$app->request->get('sort')
+        );
 
         return $this->render('maps', [
-            'maps' => $maps,
-            'pages' => $pages,
+            'maps' => $serviceResponse['maps'],
+            'pages' => $serviceResponse['pages'],
         ]);
     }
 
@@ -385,16 +391,17 @@ class SiteController extends Controller
      */
     public function actionWarcraft3(): string
     {
-        $query = Map::find()->where(['game_id' => 2]);
-        $countQuery = clone $query;
-        $pages = new Pagination(['totalCount' => $countQuery->count(), 'pageSize' => Yii::$app->request->get('per-page') ?? 5]);
-        $maps = $query->offset($pages->offset)
-            ->limit($pages->limit)
-            ->all();
+        $query = Map::find()->where(['game_id' => Game::WARCRAFT3]);
+
+        $serviceResponse = (new MapsComponent())->getQueryMaps(
+            $query,
+            Yii::$app->request->get('per-page'),
+            (int)Yii::$app->request->get('sort')
+        );
 
         return $this->render('maps', [
-            'maps' => $maps,
-            'pages' => $pages,
+            'maps' => $serviceResponse['maps'],
+            'pages' => $serviceResponse['pages'],
         ]);
     }
 }

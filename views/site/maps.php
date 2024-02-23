@@ -35,12 +35,22 @@ $this->params['breadcrumbs'][] = $this->title;
     <?php endif; ?>
     <div class="row">
         <div class="col-6"><h1><?= Html::encode($this->title) ?></h1></div>
-        <div class="col-6 text-end">Карт на страницу <?= Html::dropDownList(
-                'per-page',
-                Yii::$app->request->get('per-page') ?? 5,
-                ['5' => 5, '10' => 10, '15' => 15, '20' => 20],
-                ['id' => 'mapsPerPage']
-            ) ?></div>
+        <div class="col text-end">
+            <div>
+                Карт на страницу <?= Html::dropDownList(
+                    'per-page',
+                    Yii::$app->request->get('per-page') ?? 5,
+                    ['5' => 5, '10' => 10, '15' => 15],
+                    ['id' => 'mapsPerPage']
+                ) ?>
+                Порядок <?= Html::dropDownList(
+                    'sort',
+                    Yii::$app->request->get('sort') ?? 3,
+                    [3 => 'Сначала новые', 4 => 'Сначала старые'],
+                    ['id' => 'mapsSort']
+                ) ?>
+            </div>
+        </div>
     </div>
 
     <div class="row mt-3">
@@ -81,7 +91,8 @@ $this->params['breadcrumbs'][] = $this->title;
                                     >
                                 <?php endif; ?>
                             </div>
-                            <div class="text-start forMapLike col-2 mapId-<?= $map->id ?>" id="mapId-<?= $map->id ?>"
+                            <div class="text-start forMapLike col-2 mapId-<?= $map->id ?>"
+                                 id="mapId-<?= $map->id ?>"
                                  data-map-id="<?= $map->id ?>" style="position: relative; top: 45%">
                                 <?= $this->renderAjax('../common-components/_map-likes', ['map' => $map]) ?>
                             </div>
